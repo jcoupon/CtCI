@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 int y;
@@ -14,16 +15,30 @@ int main(){
 
     cout << "Type a city" << endl;
 
-    char answer [20];
+    // char answer [20];
 
-    cin >> answer;
+    string answer;
 
-    string answer_string;
+    // getline(cin, answer);
+    answer = "Geneve";
 
-    answer_string = answer;
+    string other_variable = "this";
 
-    cout << answer_string << endl;
-    cout << answer_string.c_str << endl;
+    string *p;
+
+    p = &answer;
+
+    // cin >> answer;
+
+    //string answer_string;
+    //answer_string = answer;
+
+    //cout << answer_string << endl;
+    //cout << answer_string.c_str() << endl;
+
+    cout << *p << p << endl;
+
+
 
     return 0;
 
