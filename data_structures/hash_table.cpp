@@ -23,6 +23,7 @@ int main(){
     answer_string = answer;
 
     cout << answer_string << endl;
+    cout << answer_string.c_str << endl;
 
     return 0;
 
