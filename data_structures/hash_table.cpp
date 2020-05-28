@@ -14,9 +14,15 @@ int main(){
 
     cout << "Type a city" << endl;
 
-    char answer [20];  
+    char answer [20];
 
-    cout << answer << endl;
+    cin >> answer;
+
+    string answer_string;
+
+    answer_string = answer;
+
+    cout << answer_str << endl;
 
     return 0;
 
