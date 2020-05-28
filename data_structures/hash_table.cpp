@@ -22,7 +22,7 @@ int main(){
 
     answer_string = answer;
 
-    cout << answer_str << endl;
+    cout << answer_string << endl;
 
     return 0;
 
