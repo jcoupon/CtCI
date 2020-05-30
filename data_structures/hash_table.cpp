@@ -37,13 +37,22 @@ class Node {
     public:
         void set_x(double xx){x = xx;};
         double get_x(){return x;};
+        Node (int,int);
+
 
 
 };
 
+
+Node::Node (int a, int b){
+
+
+
+}
+
 int main(){
 
-    Node node;
+    Node node(1,2);
 
     node.set_x(10.);
 
