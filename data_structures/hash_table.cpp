@@ -43,21 +43,22 @@ class Node {
 
 };
 
-
 Node::Node (int a, int b){
 
 
-
+    x = a;
+    y = b;
 }
 
 int main(){
 
     Node node(1,2);
 
-    node.set_x(10.);
+    //node.set_x(10.);
 
     cout << node.get_x() << endl; 
 
+    cout << node.get_x() << endl; 
 
     return 0;
 
