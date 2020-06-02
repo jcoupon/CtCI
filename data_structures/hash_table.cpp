@@ -1,6 +1,11 @@
 #include <iostream>
 #include <string>
+#include <utility>
+#include <tuple>
+#include <vector>
+
 using namespace std;
+
 
 int y;
 
@@ -45,12 +50,17 @@ class Node {
 
 Node::Node (int a, int b){
 
-
     x = a;
     y = b;
 }
 
 int main(){
+
+    std::pair<int, float> grades  = {12, 12.0};
+
+    cout << grades.first << endl;
+
+    return 0;
 
     Node node(1,2);
 
