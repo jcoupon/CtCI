@@ -3,111 +3,74 @@
 #include <utility>
 #include <tuple>
 #include <vector>
+#include <iterator>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 
-
-int y;
-
-struct fruit_t{
-
-    string color;
-    double price;
-
-} ;
-
-
-void modify_y(){
-
-    y = 10;
-
-    return;
-}
-
-void change_color(fruit_t *fruit){
-
-
-    fruit->color = "red";
-
-    cout << (*fruit).color << (*fruit).price << endl;
-
-    return;
-}
-
-
-class Node {
-
-    double x, y;
+class TagClass{
 
     public:
-        void set_x(double xx){x = xx;};
-        double get_x(){return x;};
-        Node (int,int);
-
-
+        std::unordered_map<std::string, std::string> attributes;
+        std::map<std::string, TagClass *> children;
 
 };
 
-Node::Node (int a, int b){
 
-    x = a;
-    y = b;
+void split_str(std::string str, std::vector<std::string> *substrs, char delim=' '){
+
+    std::size_t start=0, end;
+    std::string substr;
+
+    for (;;){
+        end = str.find(delim, start);
+        // cout << start << endl;
+        // cout << end << endl;
+
+        if (end == std::string::npos){
+            substr = str.substr(start);
+        }
+        else{
+            substr = str.substr(start, end-start);
+        }
+        
+        substrs->push_back(substr);
+
+        start = end+1;
+        
+        if (end == std::string::npos) break;
+
+    }
+
+    // cout << (*str).find(delim) << std::string::npos << endl;
+    // cout << *str << endl;
+
+
+
+
 }
 
 int main(){
 
-    std::pair<int, float> grades  = {12, 12.0};
+    std::string str;
+    TagClass tag;
 
-    cout << grades.first << endl;
+    str = "<this is a=sentence>";
 
-    return 0;
+    std::vector<std::string> substrs;
 
-    Node node(1,2);
+    str = str.substr(1, str.size()-2);
 
-    //node.set_x(10.);
+    split_str(str, &substrs, '=');
 
-    cout << node.get_x() << endl; 
+    tag.attributes[substrs[0]] = substrs[1];
 
-    cout << node.get_x() << endl; 
+    cout << substrs[0] << endl;
 
-    return 0;
-
-    enum color_t {black, red, colour_bizarre};
-
-
-    cout << colour_bizarre << endl;
-
-    return 0;
-
-    fruit_t orange;
-
-    orange.color = "orange";
-    orange.price = 10.0;
-
-    change_color(&orange);
-
-    cout << orange.color << orange.price << endl;
-
-
-    return 0;
-
-    cout << "Enter alloc size" << endl;
-  
-
-
-    long N;
-
-    cin >> N;
-
-    char * a = new char [N];
-
-    for (long i =0; i < N; i++){
-        a[i] = 'a';
+    for (string elem:substrs){
+        cout << elem << endl;
     }
-
-    cout << a[N-1] << endl;
-
-    cin >> N;
 
 
     return 0;
