@@ -111,14 +111,9 @@ int main(){
         // read line
         std::getline(stream, line);
 
-        //std::cout << current->name << endl;
-        //std::cout << current->parent->name << endl;
-
+        // if closing tag climb up
         if (line.at(1) == '/'){
             current = current->parent;
-
-            //std::cout << "closing" << endl;
-
             continue;
         }
 
@@ -126,17 +121,22 @@ int main(){
         TagClass *tag = new TagClass();        
         *tag = parseTag(line);
 
+        // record parent pointer
         tag->parent = current;
+
+        // record child pointer in parent 
         current->children[tag->name] = tag;
 
+        /*
         if (tag->attributes.find("value") != tag->attributes.end()){
             cout << tag->attributes["value"] << endl;
         }
         else{
-
             std::cout << "Not Found!" << endl;
         }
+        */
 
+       
         current = tag;
 
         //cout << tag << endl;
