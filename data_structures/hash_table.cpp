@@ -17,7 +17,6 @@ class TagClass{
 
 };
 
-
 void split_str(std::string str, std::vector<std::string> *substrs, char delim=' '){
 
     std::size_t start=0, end;

@@ -20,7 +20,6 @@ class TagClass{
         
 };
 
-
 std::vector<std::string> split_str(std::string str, std::string delim=" "){
 
     std::size_t start=0, end;
@@ -75,7 +74,7 @@ int main(){
 
     // for tests, mimic standard input stream
     std::string str_in =
-"4 3\n"
+"6 3\n"
 "<tag1 value = \"HelloWorld\" value2 = \"byeWorld\">\n"
 "<tag2 name = \"Name1\">\n"
 "<tag3 name = \"Name1\">\n"
@@ -85,6 +84,29 @@ int main(){
 "tag1.tag2~name\n"
 "tag1~name\n"
 "tag1~value";
+
+    str_in = 
+"10 10\n"
+"<a value = \"GoodVal\">\n"
+"<b value = \"BadVal\" size = \"10\">\n"
+"</b>\n"
+"<c height = \"auto\">\n"
+"<d size = \"3\">\n"
+"<e strength = \"2\">\n"
+"</e>\n"
+"</d>\n"
+"</c>\n"
+"</a>\n"
+"a~value\n"
+"b~value\n"
+"a.b~size\n"
+"a.b~value\n"
+"a.b.c~height\n"
+"a.c~height\n"
+"a.d.e~strength\n"
+"a.c.d.e~strength\n"
+"d~sze\n"
+"a.c.d~size\n";
  
     std::istringstream stream(str_in);
  
@@ -96,7 +118,7 @@ int main(){
     // go to the next line
     std::getline(stream, line);
 
-    std::cout << N << ' ' << Q <<  endl;
+    // std::cout << N << ' ' << Q <<  endl;
 
     TagClass *root = new TagClass();        
     root->parent = nullptr;
@@ -127,23 +149,8 @@ int main(){
         // record child pointer in parent 
         current->children[tag->name] = tag;
 
-        /*
-        if (tag->attributes.find("value") != tag->attributes.end()){
-            cout << tag->attributes["value"] << endl;
-        }
-        else{
-            std::cout << "Not Found!" << endl;
-        }
-        */
-
-       
+        // go deeper in hierarchy
         current = tag;
-
-        //cout << tag << endl;
-
-
-        //int a;
-        //cout << &a << endl;
 
     }
 
@@ -151,22 +158,35 @@ int main(){
         // read line
         std::getline(stream, line);
 
-        std::cout << line << endl;
+        // std::cout << line << endl;
 
-        std::vector<string> tags = split_str(line, ".");
+        std::vector<string> tags_key = split_str(line, "~");        
+
+        std::vector<string> tags = split_str(tags_key[0], ".");
+        std::string key = tags_key[1];
 
         current = root;
-        for (std::string tag:tags){
-            std::cout << tag << endl;
+        for (int j = 0; j < tags.size(); j++) {
 
+            // go deeper in hierarchy
+            if (current->children.find(tags[j]) == current->children.end()){
+                    std::cout << "Not Found!" << endl;
+                    break;
+            }
+            current = current->children[tags[j]];
+            // std::cout << current->name << endl;
+
+            // last tag
+            if (j == tags.size()-1){
+                if (current->attributes.find(key) != current->attributes.end()){
+                    std::cout << current->attributes[key] << endl;
+                }
+                else{
+                    std::cout << "Not Found!" << endl;
+                }           
+            }
         }
-
-
     }
-
-
-
-    std::cout << root->children["tag1"]->attributes["value"] << endl;
 
     return 0;
 }
