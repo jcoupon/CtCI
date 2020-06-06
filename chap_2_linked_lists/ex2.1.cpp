@@ -1,3 +1,17 @@
+/*
+Done well:
+- I understood the problem quickly and went with a solution quickly
+- didnot use hints
+
+To improve:
+- time management: went too quickly with a solution, forgot to test. 
+    IMPORTANT: test, test, test
+- syntax: errors made including pointers and declaration
+- first solution was wrong, the instructions pprevious = pnode 
+    was done in both cases
+- the no buffer solution was not implemented
+*/
+
 #include <iostream>
 #include <string>
 #include <unordered_set>
@@ -29,10 +43,8 @@ LinkedList::LinkedList(){
 
 void LinkedList::insert(int data){
 
-    Node * node;
+    Node * node = new Node();
     
-    node = new Node();
-
     node->data = data;
     node->next = head;
 
@@ -84,13 +96,13 @@ void LinkedList::print_list_recursive(Node *pnode=nullptr){
 
 }
 
-LinkedList create_list(){
+LinkedList* create_list(){
 
-    int n[6] {2, 3, 4, 2, 1, 3};
-    LinkedList l;
+    int n[6] {2, 3, 4, 2, 1,  1, 3, 1, 3};
+    LinkedList *l = new LinkedList();
     
     for (int e:n){
-        l.insert(e);
+        l->insert(e);
     }
 
     return l;
@@ -98,16 +110,19 @@ LinkedList create_list(){
 
 int main(){
 
-    LinkedList l = create_list();
+    LinkedList *l = create_list();
 
-    l.print_list();
+    std::cout << "Create list" << endl;
+    l->print_list();
     // l.print_list_recursive();
+
     std::cout << "Remove duplicates" << endl;
 
-    l.remove_dups();
-    l.print_list();
+    l->remove_dups();
+    l->print_list();
+
+    delete l;
 
     return 0;
-
 }
 
