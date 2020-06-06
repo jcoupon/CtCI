@@ -22,6 +22,7 @@ linkedList create_list(){
 
     int n {2, 3, 4, 2, 1, 3};
     linkedList l;
+    
 
     return l;
 }
