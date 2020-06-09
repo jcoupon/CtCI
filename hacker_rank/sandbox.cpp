@@ -1,6 +1,7 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <string>
 using namespace std;
 
 vector<int> parseInts(string str) {
@@ -9,8 +10,13 @@ vector<int> parseInts(string str) {
     std::stringstream ss(str);
     std::vector<int> result;
     int n;
+    char c;
+    //string n;
+
     while(ss >> n){
+        std::cout << n << endl;
         result.push_back(n);
+        ss >> c;
     }
 
     return result;
