@@ -1,9 +1,17 @@
+/*
+Done well:
+    - good solution that uses a hash table, 
+    time O(n), space O(n), small typo in table definition
+To improve:
+    - clarify the problem better, case sensitive and space
+    - the last false statement isn't necessary. should have seen it
+*/
+
 #include <string>
 #include <iostream>
 #include <unordered_map>
 
 using namespace std;
-
 
 bool check_perm(string str1, string str2){
 
@@ -33,12 +41,11 @@ bool check_perm(string str1, string str2){
                 char_num.erase(c);
             }
         }
-    }
-    
-    // the char set is empty str2 is a permutation of str1
+    }    
+    // the char set is empty so str2 is a permutation of str1
     if (char_num.size() == 0) return true;
 
-    // str1 has more character than str2
+    // str1 has more unique characters than str2
     return false;
 }
 
@@ -57,7 +64,7 @@ int main(){
     std::cout << check_perm(a, "clbl") << endl;
 
     // false
-    std::cout << check_perm(a, "cl") << endl;
+    std::cout << check_perm(a, "blll") << endl;
 
     return 0;
 }
