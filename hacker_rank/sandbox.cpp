@@ -2,6 +2,8 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <thread>
+
 using namespace std;
 
 class Person{
@@ -17,8 +19,6 @@ class Person{
             std::cout << "Deleting person..." << endl;
 
         }
-
-
 };
 
 //Person::Person(int a){
