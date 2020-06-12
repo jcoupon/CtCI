@@ -43,23 +43,18 @@ bool check_perm(string str1, string str2){
 }
 
 
-
 int main(){
 
-
     string a = "ball";
-    string b = "abll";
-    string c = "abl";
-    string d = "clbl";
 
     // true
-    std::cout << check_perm(a, b) << endl;
+    std::cout << check_perm(a, "abll") << endl;
 
     // false
-    std::cout << check_perm(a, c) << endl;
+    std::cout << check_perm(a, "abl") << endl;
 
     // false
-    std::cout << check_perm(a, d) << endl;
+    std::cout << check_perm(a, "clbl") << endl;
 
     return 0;
 }
