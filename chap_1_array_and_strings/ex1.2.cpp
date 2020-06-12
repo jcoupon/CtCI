@@ -56,5 +56,8 @@ int main(){
     // false
     std::cout << check_perm(a, "clbl") << endl;
 
+    // false
+    std::cout << check_perm(a, "cl") << endl;
+
     return 0;
 }
