@@ -1,3 +1,13 @@
+/*
+Done well:
+
+
+To improve:
+
+
+
+*/
+
 #include <iostream>
 #include <string>
 
