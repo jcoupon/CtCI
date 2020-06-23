@@ -9,68 +9,22 @@
 
 using namespace std;
 
-string countAndSay(int n) {
-    string s = "1";
 
-    for (int j=1; j<n; j++){
+unordered_map<int, vector<int>>int_to_indices(vector<int>& vec){
 
-        int count = 0;
-        string result ="";
+  unordered_map<int, vector<int>> result;
 
-        for(int i=0; i<s.length(); i++){
-
-            count++;
-            if(i==s.length()-1){
-                result += to_string(count) + s[i];
-            }
-            if(i<s.length()-1 && s[i] != s[i+1]){
-                result += to_string(count) + s[i];
-                count = 0;
-            }
-        }
-
-        cout << result << endl;
-
-        s = result;
-
-    }
-
-    return s;
+  for(int i=0; i<vec.size(); i++){
+    result[vec[i]].push_back(i); 
+  }
+  
+  return result;
 }
-
-
-string countAndSayR(int n) {
-   
-    if (n==1) return "1";
-    else{
-
-        string s = countAndSayR(n-1);
-
-        int count = 0;
-        string result ="";
-
-        for(int i=0; i<s.length(); i++){
-
-            count++;
-            if(i==s.length()-1){
-                result += to_string(count) + s[i];
-            }
-            if(i<s.length()-1 && s[i] != s[i+1]){
-                result += to_string(count) + s[i];
-                count = 0;
-            }
-        }
-        return result;
-    }
-}
-
-
 
 int main(){
 
     string result;
 
-    result = countAndSayR(8);
 
     cout << result << endl;
 
