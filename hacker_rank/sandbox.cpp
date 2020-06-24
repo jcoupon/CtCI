@@ -57,28 +57,36 @@ int CLS_DP(vector<int>& A, vector<int>& B){
 
 }
 
+vector<vector<int>> subsetsWithDup(vector<int>& nums) {
 
-int maxUncrossedLines(vector<int>& A, vector<int>& B) {
-
-    int M = A.size();
-    int N = B.size();
-
-    vector<vector<int>> memo(M, vector<int>(N, -1));
+    vector<vector<int>> result;
    
-    // return CLS(A, B, A.size()-1, B.size()-1, memo);
+    // base case
+    if (nums.size() == 0){  
+    return result;
+    }
 
-    return CLS_DP(A, B);
+    for(int i=0; i<nums.size();i++){
+        vector<int> nums_copy = nums;
+        nums_copy.erase(nums_copy.begin() + i); 
+        result = subsetsWithDup(nums_copy);
+        result.push_back(nums[i]);
+    }
+    
+    
+    return result;
 
+        
 }
-  
-  
+
+
     
         
 int main(){
 
-    vector<int> A {2, 5, 1, 2, 5};
+    vector<int> A {1, 2, 2};
 
-    vector<int> B {10,5, 2, 1, 5, 2};
+    auto sets =  
 
     cout << maxUncrossedLines(A, B) << endl;
 
