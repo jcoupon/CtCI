@@ -63,20 +63,17 @@ vector<vector<int>> subsetsWithDup(vector<int>& nums) {
    
     // base case
     if (nums.size() == 0){  
-    return result;
+        return result;
     }
 
     for(int i=0; i<nums.size();i++){
         vector<int> nums_copy = nums;
-        nums_copy.erase(nums_copy.begin() + i); 
+        nums_copy.erase(nums_copy.begin() + i);
         result = subsetsWithDup(nums_copy);
-        result.push_back(nums[i]);
+        result.push_back(nums);
     }
-    
-    
-    return result;
-
-        
+      
+    return result;       
 }
 
 
@@ -86,10 +83,20 @@ int main(){
 
     vector<int> A {1, 2, 2};
 
-    auto sets =  
+    auto sets = subsetsWithDup(A);
 
-    cout << maxUncrossedLines(A, B) << endl;
 
+    for (auto s:sets){
+
+        for (auto v:s){
+
+            cout << v << ' ';
+
+        }
+        cout << endl;
+
+
+    }
 
     return 0;
 }
