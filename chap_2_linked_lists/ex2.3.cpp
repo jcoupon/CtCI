@@ -49,8 +49,6 @@ void printList(Node *head){
 }
 
 
-
-
 int main(){
 
     Node *head = new Node(0);
