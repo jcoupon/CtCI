@@ -69,6 +69,7 @@ int main(){
     printList(head);
 
 
+
     Node *runner = head;
     for(auto v:vec){
         Node *node = new Node(v);
