@@ -31,6 +31,18 @@ void deleteNodeWithHead(Node *head, Node *nodeToDelete){
 }
 
 
+void deleteNode(Node *nodeToDelete){
+    
+    Node *next = nodeToDelete->next;
+
+    nodeToDelete->data = next->data;
+    nodeToDelete->next = next->next;
+
+  return;
+}
+
+
+
 void printList(Node *head){
 
     Node *runner = head;
@@ -69,8 +81,7 @@ int main(){
     printList(head);
 
 
-
-    Node *runner = head;
+    runner = head;
     for(auto v:vec){
         Node *node = new Node(v);
         runner->next = node;
@@ -79,7 +90,7 @@ int main(){
     }
 
     printList(head);
-    deleteNodeWithHead(head, nodeToDelete);
+    deleteNode(nodeToDelete);
     printList(head);
 
     return 0;
