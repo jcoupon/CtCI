@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 class Node{
@@ -35,7 +36,11 @@ void printList(Node *head){
     Node *runner = head;
 
     while(runner){
-        cout << runner->data << '->' << endl
+        cout << runner->data;
+        if(runner->next){
+            cout << "->";
+        }
+        runner = runner->next;
     }
     cout << endl;
 
@@ -51,13 +56,23 @@ int main(){
     Node *head = new Node(0);
     vector<int> vec = {1, 3, 5, 1, 6};
 
+    Node *nodeToDelete;
+
     Node *runner = head;
     for(auto v:vec){
         Node *node = new Node(v);
         runner->next = node;
         runner = node;
+
+        if(v==3){ nodeToDelete = node;}
+
     }
 
+    printList(head);
+
+    deleteNode(head, nodeToDelete);
+
+    printList(head);
 
     return 0;
 }
