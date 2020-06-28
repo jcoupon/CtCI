@@ -31,6 +31,7 @@ void URLify_arr(char *str, int N){
     if(str[i] == ' ') N_spaces++;  
   }
 
+  // URL space occupy 3 (new space) - 1 (old space) = 2 indices
   int end = N+N_spaces*2;
   for(int i=N-1; i>=0; i--){
     
