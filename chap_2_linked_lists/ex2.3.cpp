@@ -30,6 +30,20 @@ void deleteNode(Node *head, Node *nodeToDelete){
 }
 
 
+void printList(Node *head){
+
+    Node *runner = head;
+
+    while(runner){
+        cout << runner->data << '->' << endl
+    }
+    cout << endl;
+
+
+    return;
+}
+
+
 
 
 int main(){
