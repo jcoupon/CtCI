@@ -7,6 +7,8 @@
 #include <map>
 #include <unordered_map>
 #include <algorithm>  
+#include <unordered_set>
+#include <set>
 
 using namespace std;
 
@@ -57,45 +59,104 @@ int CLS_DP(vector<int>& A, vector<int>& B){
 
 }
 
-vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+set<vector<int>> subsets(vector<int>& nums){
 
-    vector<vector<int>> result;
+    set<vector<int>> result;
    
     // base case
-    if (nums.size() == 0){  
+    if (nums.size() == 0){
+        vector<int> empty;
+        result.insert(empty);
         return result;
     }
 
+    result.insert(nums);
+
     for(int i=0; i<nums.size();i++){
-        vector<int> nums_copy = nums;
-        nums_copy.erase(nums_copy.begin() + i);
-        result = subsetsWithDup(nums_copy);
-        result.push_back(nums);
+        vector<int> nums_copy;
+        for(int j=0; j<nums.size(); j++){
+            if(i !=j ) nums_copy.push_back(nums[j]);
+        }
+        cout << "vector: ";
+        for (auto v:nums_copy){
+            cout << v << ' ';
+        }
+        cout << endl;
+
+        set<vector<int>> subs = subsets(nums_copy);
+
+        for(auto s:subs){
+            result.insert(s);
+        }
     }
       
-    return result;       
+    return result;
+}
+
+vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+
+    auto sets = subsets(nums);
+
+    vector<vector<int>> result;
+
+    for (auto s:sets){
+        result.push_back(s);
+    }
+
+    return result;
+
+
 }
 
 
-    
         
 int main(){
 
+    int a = 0;
+
+    cout << 1/a << endl;
+
+    return 0;
+
+    /*
+    vector<vector<int>> result;
+
+    vector<int> vec {1, 3, 4, 5};
+
+    int N = vec.size();
+
+    swap(vec[0], vec[N-1]);
+    
+    vec.pop_back();
+
+    for(auto v:vec){
+        cout << v << endl;
+
+
+    }
+
+
+    return 0;
+
+    vector<int> empty;
+
+    result.push_back(empty);
+
+    cout << result.size() << endl;
+    return 0;
+    */
+
+
+    //vector<int> A {1, 2, 2};
     vector<int> A {1, 2, 2};
 
     auto sets = subsetsWithDup(A);
 
-
     for (auto s:sets){
-
         for (auto v:s){
-
             cout << v << ' ';
-
         }
         cout << endl;
-
-
     }
 
     return 0;
