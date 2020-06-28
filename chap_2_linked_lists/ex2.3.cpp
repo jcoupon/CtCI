@@ -11,7 +11,7 @@ public:
 
 };
 
-void deleteNode(Node *head, Node *nodeToDelete){
+void deleteNodeWithHead(Node *head, Node *nodeToDelete){
   
   Node *runner = head;
 
@@ -61,15 +61,24 @@ int main(){
         Node *node = new Node(v);
         runner->next = node;
         runner = node;
-
         if(v==3){ nodeToDelete = node;}
-
     }
 
     printList(head);
+    deleteNodeWithHead(head, nodeToDelete);
+    printList(head);
 
-    deleteNode(head, nodeToDelete);
 
+    Node *runner = head;
+    for(auto v:vec){
+        Node *node = new Node(v);
+        runner->next = node;
+        runner = node;
+        if(v==3){ nodeToDelete = node;}
+    }
+
+    printList(head);
+    deleteNodeWithHead(head, nodeToDelete);
     printList(head);
 
     return 0;
