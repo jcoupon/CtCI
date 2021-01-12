@@ -4,8 +4,7 @@
 
 using namespace std;
 
-
-int finPivot(const vector<int> & nums){
+int findPivot(const vector<int> & nums){
     int lo = 0;
     int hi = nums.size()-1;
 
@@ -46,8 +45,12 @@ int binarySearch(const vector<int> & nums, int lo, int hi, int target){
 }
 
 int findRotated(const vector<int> & nums, int target){
+    /*
+        work without duplicates
+        If duplicates, no choice but to search in linear time
+    */
 
-    int pivot = finPivot(nums);
+    int pivot = findPivot(nums);
     
     if(target >= nums[pivot]){
         return binarySearch(nums, pivot, nums.size()-1, target);
@@ -74,18 +77,9 @@ int main(){
     vector<int> nums3 = {1, 3, 4, 5, 7, 10, 14};
     cout << findRotated(nums3, 5) << endl;
 
-    // expected: any
-    vector<int> nums4 = {1, 1, 1, 1, 1, 1, 1};
-    cout << findRotated(nums4, 1) << endl;
-
     // expected: -1
-    vector<int> nums5 = {1, 3, 4, 5, 7, 10, 14};
-    cout << findRotated(nums5, 6) << endl;
-
-    // expected: -1
-    vector<int> nums6 = {2, 2, 4, 5, 7, 2};
-    cout << findRotated(nums6, 5) << endl;
-
+    vector<int> nums4 = {1, 3, 4, 5, 7, 10, 14};
+    cout << findRotated(nums4, 6) << endl;
 
     return 0;
 }
