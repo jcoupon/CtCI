@@ -82,5 +82,10 @@ int main(){
     vector<int> nums5 = {1, 3, 4, 5, 7, 10, 14};
     cout << findRotated(nums5, 6) << endl;
 
+    // expected: -1
+    vector<int> nums6 = {2, 2, 4, 5, 7, 2};
+    cout << findRotated(nums6, 5) << endl;
+
+
     return 0;
 }
