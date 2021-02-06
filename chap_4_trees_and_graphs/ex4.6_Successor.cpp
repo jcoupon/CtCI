@@ -1,8 +1,4 @@
 /*
-Done well:
-    - right approach but first solution did not record leaves
-To improve:
-    - reduce code complexity
 
 */
 
