@@ -64,11 +64,20 @@ int main(){
     // vector<vector<char>> deps = {{'b', 'f'}, {'a', 'd'}, {'f', 'b'}, {'b', 'd'}, {'f', 'a'}, {'d', 'c'}};
     vector<vector<char>> deps = {{'a', 'd'}, {'f', 'b'}, {'b', 'd'}, {'f', 'a'}, {'d', 'c'}};
     vector<char> projList = getOrder(projects, deps);
-
     for(auto proj:projList){
         std::cout << proj << ' ';
     }
     std::cout << std::endl;
+
+    projects = {'a', 'b', 'c', 'd', 'e', 'f'};
+    deps = {{'a', 'd'}, {'f', 'b'}, {'b', 'd'}, {'f', 'a'}, {'d', 'c'}};
+    vector<char> projList = getOrder(projects, deps);
+    for(auto proj:projList){
+        std::cout << proj << ' ';
+    }
+    std::cout << std::endl;
+
+
 
     return EXIT_SUCCESS;
 }
