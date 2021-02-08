@@ -32,8 +32,6 @@ public:
     bool isEmpty(){
         return R.empty() && L.empty();
     }
-
-
 };
 
 

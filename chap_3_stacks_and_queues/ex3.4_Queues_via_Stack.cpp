@@ -2,7 +2,6 @@
 #include <stack>
 
 class MyQueue{
-    
 private:
     std::stack<int> L;
     std::stack<int> R;
